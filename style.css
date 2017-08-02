@@ -1,0 +1,9 @@
+﻿
+.section3{
+    background-image: url("http://codelab.camp/ninja.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: deeppink;
+    background-position: 90% 0%;
+    color: #fff;
+}
