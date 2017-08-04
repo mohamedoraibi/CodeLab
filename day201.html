@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Hw 1</title>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <style>
+        .nostyledot {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row" id="root">
+        <includebar></includebar>
+        <div class="container">
+            <div class="page-header alert alert-info">
+                <h1>Day 2 Home Work 1
+                    <small>FootBall Sport Team \ Registration List</small>
+                </h1>
+            </div>
+            <div class="col-md-8 alert alert-warning ">
+                <input id="inp" type="text" placeholder="Type Something">
+                <button @click="AddName">Add</button>
+                <button v-on:click="DeleteLast">Delete Last One</button>
+                <button v-on:click="Edit">Edit Last One</button>
+                <br/>
+                <br/>
+                <div class="panel panel-default">
+                    <table class="table">
+                        <tr>
+                            <td>#</td>
+                            <td>Name</td>
+                            <td>Delete</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <li class="nostyledot" v-for="(name,index) in names">{{index}}</li>
+                            </td>
+                            <td>
+                                <li class="nostyledot" v-for="(name,index) in names">{{name}}</li>
+                            </td>
+                            <td>
+                                <li class="nostyledot" v-for="(name,index) in names">
+                                    <button @click="deleteItem(index)">Delete</button>
+                                </li>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <includeter></includeter>
+    </div>
+
+</div>
+<script src="https://unpkg.com/vue@2.4.2"></script>
+<script src="main.js"></script>
+<script>
+
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            names: ["ali", "haider", "mohamed"],
+        },
+        methods: {
+            deleteItem: function (index) {
+                this.names.splice(index, 1);
+            },
+            AddName: function () {
+                if (this.input != "") {
+                    var input = document.getElementById("inp");
+                    this.names.push(input.value);
+                    input.value = "";
+                } else {
+                    alert("Input is Empty");
+                }
+            },
+            DeleteLast: function () {
+                var input = document.getElementById("inp");
+                this.names.pop(input.value);
+                input.value = "";
+            },
+            Edit: function () {
+                var input = document.getElementById("inp");
+                this.names.pop(input.value);
+                var input = document.getElementById("inp");
+                this.names.push(input.value);
+                input.value = "";
+            },
+        }
+    })
+</script>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>
